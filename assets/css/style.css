@@ -1104,6 +1104,10 @@ section {
     padding-right: 20px 15px;
   }
 }
+
+/*--------------------------------------------------------------
+# Other skills
+--------------------------------------------------------------*/
 .other-skills {
   background-color: #f9f9f9;
   border-radius: 10px;
@@ -1118,8 +1122,8 @@ section {
 }
 
 .skill-category {
-  width: calc(50% - 60px);
-  margin-bottom: 45px;
+  width: calc(50% - 20px);
+  margin-bottom: 30px;
 }
 
 .skill-category code {
@@ -1181,6 +1185,17 @@ section {
   }
 }
 
+/* Responsive styles */
+@media (max-width: 768px) {
+  .skill-category {
+    width: 100%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Intro Quote
+--------------------------------------------------------------*/
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .quote {
@@ -1223,6 +1238,9 @@ section {
   }
 }
 
+/*--------------------------------------------------------------
+# My resume button
+--------------------------------------------------------------*/
 
 .my-resume {
   text-align: center;
