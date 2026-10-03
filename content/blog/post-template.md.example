@@ -1,0 +1,11 @@
+---
+title: "Your post title"
+date: "2026-10-03"
+tags: ["Your tag"]
+description: "Your post description"
+draft: true
+---
+
+Write your Markdown here. Rename this file to a unique lowercase slug ending
+in .md, replace this example with your own content, and set draft to false
+when you want it published. Reading time is calculated automatically.

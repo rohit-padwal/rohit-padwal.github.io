@@ -1,0 +1,271 @@
+{
+  "name": "Rohit Padwal",
+  "fullName": "Rohit Ravindra Padwal",
+  "positioning": "Senior Software Engineer — Backend & Distributed Systems",
+  "roles": [
+    "Software Engineer",
+    "Developer",
+    "Traveller"
+  ],
+  "about": "I am a skilled software development professional with 3 years of experience in software design, development, and integration. Proficient in developing systems for Industry applications and a detail-oriented, analytical problem-solver, focused on enhancing user experience..",
+  "quote": [
+    "\"Dynamic and Multifaceted Individual:",
+    "Swimmer, a Cricket Enthusiast, and a Culinary Maestro! \""
+  ],
+  "factsIntro": "I am excited to bring my technical expertise to the table and contribute to impactful projects. Please explore the rest of my website to learn more about my work, experience, and projects. Feel free to reach out to me if you have any questions or opportunities for collaboration.",
+  "facts": [
+    {
+      "label": "Lines of Code",
+      "value": 100000
+    },
+    {
+      "label": "Projects",
+      "value": 25
+    },
+    {
+      "label": "Collaborations",
+      "value": 15
+    },
+    {
+      "label": "Open-source contributions",
+      "value": 10
+    }
+  ],
+  "skillsIntro": "Continuous learning is at the heart of my professional journey. I am always eager to explore emerging technologies and keep up with the latest industry trends. This drive pushes me to stay adaptable and allows me to quickly pick up new tools and frameworks as needed...",
+  "skills": [
+    {
+      "name": "Java",
+      "value": 100
+    },
+    {
+      "name": "HTML",
+      "value": 100
+    },
+    {
+      "name": "CSS",
+      "value": 90
+    },
+    {
+      "name": "Angular",
+      "value": 80
+    },
+    {
+      "name": "SQL",
+      "value": 90
+    },
+    {
+      "name": "Python",
+      "value": 75
+    }
+  ],
+  "skillGroups": [
+    {
+      "title": "Backend & Microservices",
+      "items": [
+        "Java",
+        "Spring Boot",
+        "Dropwizard",
+        "Hibernate",
+        "REST APIs",
+        "gRPC"
+      ]
+    },
+    {
+      "title": "Distributed Systems & Streaming",
+      "items": [
+        "Apache Kafka",
+        "Event-Driven Architecture",
+        "Distributed Systems",
+        "Real-Time Processing"
+      ]
+    },
+    {
+      "title": "Observability",
+      "items": [
+        "OpenTelemetry",
+        "OTLP",
+        "IBM Instana",
+        "Prometheus",
+        "Jaeger",
+        "Distributed Tracing",
+        "Metrics & Logging"
+      ]
+    },
+    {
+      "title": "AI & Machine Learning",
+      "items": [
+        "Python",
+        "NLP",
+        "LLM",
+        "Prompt Engineering",
+        "Agentic Workflows"
+      ]
+    },
+    {
+      "title": "Cloud & Kubernetes",
+      "items": [
+        "AWS",
+        "Docker",
+        "Kubernetes",
+        "Helm",
+        "OpenShift"
+      ]
+    },
+    {
+      "title": "Databases & Analytics",
+      "items": [
+        "ClickHouse",
+        "Elasticsearch",
+        "SQL",
+        "PostgreSQL",
+        "Oracle",
+        "MySQL",
+        "NoSQL"
+      ]
+    },
+    {
+      "title": "Frontend",
+      "items": [
+        "Angular",
+        "React",
+        "JavaScript",
+        "TypeScript",
+        "HTML5",
+        "CSS3"
+      ]
+    },
+    {
+      "title": "DevOps & Engineering Tools",
+      "items": [
+        "Git",
+        "GitHub Actions",
+        "Jenkins",
+        "Maven",
+        "Gradle",
+        "Jira",
+        "SonarQube",
+        "IntelliJ IDEA"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "The University of Texas at Arlington",
+      "dates": "August 2021 - May 2023",
+      "degree": "Master of Science in Computer Science",
+      "grade": "3.9/4",
+      "details": [
+        "Web development, Cloud Computing, Software engineering, Database, and Distributed Systems"
+      ]
+    },
+    {
+      "school": "Savitribai Phule Pune University",
+      "dates": "July 2013 - July 2017",
+      "degree": "Bachelor of Engineering in Computer Engineering",
+      "grade": "3.9/4",
+      "details": [
+        "Algorithm design, Data structures, Object-Oriented & reactive programming"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "title": "Software Engineer",
+      "dates": "July 2026 - Present",
+      "company": "IBM",
+      "location": "Kochi, India"
+    },
+    {
+      "title": "Software Engineer",
+      "dates": "Janury 2024 - July 2026",
+      "company": "IBM",
+      "location": "Austin, USA"
+    },
+    {
+      "title": "Software Engineer Intern",
+      "dates": "September 2023 - December 2023",
+      "company": "IpserLabs LLC",
+      "location": "Mountain View, USA"
+    },
+    {
+      "title": "Software Engineering Researcher",
+      "dates": "July 2023 - August 2023",
+      "company": "The University of Texas at Arlington",
+      "location": "Arlington, USA"
+    },
+    {
+      "title": "Software Engineer Intern",
+      "dates": "June 2022 - August 2022",
+      "company": "RepairSmith, Inc",
+      "location": "Los Angeles, USA"
+    },
+    {
+      "title": "Senior Systems Engineer",
+      "dates": "December 2019 - July 2021",
+      "company": "Infosys Limited",
+      "location": "Pune, India"
+    },
+    {
+      "title": "Software Engineer",
+      "dates": "May 2018 - June 2019",
+      "company": "Product Dossier Solutions India Pvt Ltd",
+      "location": "Pune, India"
+    }
+  ],
+  "projectsIntro": "Welcome to the captivating world of technology! In this corner of my personal website, I am thrilled to showcase a collection of my innovative tech projects. Here, you'll discover a fusion of creativity, problem-solving, and cutting-edge advancements that have fueled my passion for all things tech..",
+  "projects": [
+    {
+      "slug": "solidity-grammer-fuzzer",
+      "title": "Solidity-Grammer-Fuzzer",
+      "description": "Grammar-based fuzzing and linting for the Solidity programming language",
+      "githubUrl": "https://github.com/rohit-padwal/Solidity-Grammer-Fuzzer"
+    },
+    {
+      "slug": "cryptographic-algo-with-flask-auth",
+      "title": "Cryptographic Algo Analysis",
+      "description": "Results and analysis of these Cryptographic Algorithms.",
+      "githubUrl": "https://github.com/rohit-padwal/Cryptographic-Algo-with-Flask-Auth"
+    },
+    {
+      "slug": "lunamar-real-estate-managemnet",
+      "title": "Real Estate Management",
+      "description": "Enhanced user engagement, with a responsive design .",
+      "githubUrl": "https://github.com/rohit-padwal/lunamar-Real-Estate-Managemnet"
+    },
+    {
+      "slug": "desktop-voice-assistant",
+      "title": "Desktop-Voice-Assistant",
+      "description": "Creation that brings voice-controlled capabilities to your desktop.",
+      "githubUrl": "https://github.com/rohit-padwal/Desktop-Voice-Assistant"
+    },
+    {
+      "slug": "sorting-algorithms",
+      "title": "Sorting Algorithm GUI & Analysis",
+      "description": "Sorting algorithms through an interactive interface.",
+      "githubUrl": "https://github.com/rohit-padwal/Sorting-Algorithms"
+    },
+    {
+      "slug": "project-management-tool",
+      "title": "Project-Management-Tool",
+      "description": "Task management and enhance collaboration within project teams..",
+      "githubUrl": "https://github.com/rohit-padwal/Project-Management-Tool"
+    }
+  ],
+  "contactIntro": "Feel free to connect ...",
+  "email": "rohitpadwal.uta@gmail.com",
+  "resume": {
+    "heading": "Download my resume",
+    "label": "Download Resume",
+    "url": "/resume/Rohit_Padwal_Resume.pdf"
+  },
+  "socials": [
+    {
+      "label": "github",
+      "url": "https://github.com/rohit-padwal/"
+    },
+    {
+      "label": "linkedin",
+      "url": "https://www.linkedin.com/in/padwal-rohit/"
+    }
+  ]
+}
