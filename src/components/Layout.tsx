@@ -3,6 +3,7 @@ import { Link, Outlet, useLocation } from 'react-router';
 import { portfolio } from '../content';
 import { Arrow } from './Icon';
 import styles from '../styles.module.css';
+import { useScrollReveal } from './useScrollReveal';
 
 const navigation = [
   ['Home', '/#hero'], ['About', '/#about'], ['Skills', '/#skills'], ['Education', '/#education'],
@@ -10,6 +11,7 @@ const navigation = [
 ];
 
 export function Layout() {
+  useScrollReveal();
   const [open, setOpen] = useState(false);
   const location = useLocation();
   const toggle = useRef<HTMLButtonElement>(null);

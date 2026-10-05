@@ -164,15 +164,22 @@ CSS Modules were selected to keep this bespoke layout readable and scoped, with 
 
 | Token | Value | Use |
 | --- | --- | --- |
-| Canvas | `#F5F7FA` | Cool background sections |
-| Surface | `#FFFFFF` | Main surface and cards |
-| Ink | `#15263F` | Headings and Facts band |
-| Muted | `#526176` | Supporting text |
-| Blue | `#2855D9` | Primary actions and focus |
-| Teal | `#087F78` | Secondary skill/role accents |
-| Line | `#DCE2EB` | Borders and separators |
+| Canvas | `#EEF2F6` | Hero and Projects mist backgrounds |
+| Surface | `#F8FAFB` | Chalk background for About and Education |
+| Card | `#FCFDFD` | Skills, Projects, Education, and form panels |
+| Ink | `#172D3C` | Headings, Experience section, and Footer |
+| Muted | `#506274` | Supporting text |
+| Blue | `#3154A0` | Primary actions, active navigation, and focus |
+| Teal | `#126D65` | Skill bars, links, card hover borders, and Contact action |
+| Amber | `#9B5B12` | Hero rule, Education dates, and Blog divider |
+| Sage | `#E8F0ED` | Skills background and secondary hover surfaces |
+| Line | `#CFDADF` | Borders and separators |
 
 Manrope is used for headings, Source Sans 3 for body text, and IBM Plex Mono for dates/labels. Fonts are bundled and served locally. The scale uses 12/14/18/22/28/40px tokens with fluid hero and page headings. The 1160px content width, numbered sections, timeline, restrained project cards, and original photography establish the layout. Mobile and tablet use a keyboard-accessible navigation menu with Escape support. There are visible focus states, a skip link, semantic sections, correctly associated form labels, accessible error descriptions, and reduced-motion support.
+
+The header gives navigation its own flexible width with evenly distributed 16px labels and 48px click targets; it collapses below 1280px. The visual pass keeps the original content and section order. Experience uses a navy timeline, Facts a lighter blue band, Skills sage panels, Projects mist cards, Education inset amber edges, Blog an editorial divider, and Contact a framed form. Existing `assets/img/hero-bg.jpg` stays in the hero; `assets/img/profile-img.jpg` becomes a larger framed About portrait. No additional photo attachments were received for this pass.
+
+The hero has a single staggered entrance. Scroll groups use 620ms opacity/transform reveals with a small IntersectionObserver hook; links, buttons, and cards have restrained hover feedback. Static/no-JavaScript HTML stays visible. Keyboard focus reveals a group immediately. Reduced-motion mode disables entrances, reveals, hover translations, and smooth scrolling, including when the preference changes while the page is open. No animation library or component framework was added.
 
 The requested **Senior Software Engineer — Backend & Distributed Systems** headline is new positioning explicitly requested in the brief. The original bio, including its “3 years” wording, and all recorded job titles remain unchanged. Observability and AI appear using the existing skill-category wording.
 

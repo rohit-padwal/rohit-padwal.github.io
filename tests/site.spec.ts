@@ -68,6 +68,12 @@ for (const [name, width, height] of [['mobile', 390, 844], ['tablet', 820, 1180]
       await expect(img).toHaveJSProperty('complete', true);
       expect(await img.evaluate((node: HTMLImageElement) => node.naturalWidth)).toBeGreaterThan(0);
     }
+    for (const group of await page.locator('[data-reveal]').all()) {
+      await group.scrollIntoViewIfNeeded();
+      await expect(group).toHaveAttribute('data-reveal-state', 'visible');
+      await expect.poll(() => group.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
+    }
+    await expect(page.locator('[data-reveal-state="pending"]')).toHaveCount(0);
     const accessibility = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21aa']).analyze();
     expect(accessibility.violations).toEqual([]);
     await page.goto('/');
@@ -75,7 +81,7 @@ for (const [name, width, height] of [['mobile', 390, 844], ['tablet', 820, 1180]
     await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused();
     const outline = await page.getByRole('link', { name: 'Skip to content' }).evaluate((node) => getComputedStyle(node).outlineWidth);
     expect(parseFloat(outline)).toBeGreaterThan(0);
-    if (width < 1230) {
+    if (width < 1280) {
       await page.getByRole('button', { name: 'Menu' }).click();
       await expect(page.getByRole('navigation', { name: 'Main navigation' })).toBeVisible();
       await page.keyboard.press('Escape');
@@ -86,7 +92,9 @@ for (const [name, width, height] of [['mobile', 390, 844], ['tablet', 820, 1180]
       await expect(page.getByRole('navigation')).toBeHidden();
     }
     await page.goto('/');
+    await page.emulateMedia({ reducedMotion: 'reduce' });
     await page.screenshot({ path: `test-results/${name}-home.png`, fullPage: true });
+    await page.screenshot({ path: `test-results/${name}-hero.png` });
   });
 }
 
@@ -122,6 +130,72 @@ test('contact validation, sending state and success are visible', async ({ page 
   release();
   await expect(page.getByRole('status')).toContainText('Your message has been sent. Thank you!');
   await expect(page.getByLabel('Your Name')).toHaveValue('');
+});
+
+test('header targets and spacing stay balanced at intermediate and large widths', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const width of [320, 640, 1024, 1279, 1280, 1440, 1920]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await page.goto('/');
+    await page.evaluate(() => document.fonts.ready);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    if (width < 1280) {
+      await expect(page.getByRole('button', { name: 'Menu' })).toBeVisible();
+      await page.getByRole('button', { name: 'Menu' }).click();
+    }
+    const links = page.getByRole('navigation').getByRole('link');
+    await expect(links).toHaveCount(9);
+    for (const link of await links.all()) {
+      const size = await link.evaluate((element) => ({ font: parseFloat(getComputedStyle(element).fontSize), height: element.getBoundingClientRect().height }));
+      expect(size.font).toBeGreaterThanOrEqual(16);
+      expect(size.height).toBeGreaterThanOrEqual(48);
+    }
+    if (width >= 1280) {
+      const brand = await page.getByRole('link', { name: 'Rohit Padwal — Home', exact: true }).boundingBox();
+      const first = await links.first().boundingBox();
+      const last = await links.last().boundingBox();
+      expect(first!.x - (brand!.x + brand!.width)).toBeLessThanOrEqual(32);
+      expect(last!.x + last!.width).toBeLessThanOrEqual(width - 19);
+    }
+  }
+});
+
+test('scroll reveals work once and keyboard focus reveals offscreen controls', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  const projectGroup = page.locator('#portfolio [data-reveal]').last();
+  await expect(projectGroup).toHaveAttribute('data-reveal-state', 'pending');
+  await projectGroup.scrollIntoViewIfNeeded();
+  await expect(projectGroup).toHaveAttribute('data-reveal-state', 'visible');
+  await expect.poll(() => projectGroup.evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
+  await page.locator('#hero').scrollIntoViewIfNeeded();
+  await expect(projectGroup).toHaveAttribute('data-reveal-state', 'visible');
+  // A keyboard user can tab to an offscreen form without waiting for a reveal.
+  await page.getByLabel('Your Name').focus();
+  await expect(page.locator('#contact [data-reveal]').last()).toHaveAttribute('data-reveal-state', 'visible');
+});
+
+test('reduced motion and no JavaScript keep every section visible', async ({ page, browser }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.goto('/');
+  await expect(page.locator('[data-reveal-state="pending"]')).toHaveCount(0);
+  expect(await page.locator('#hero h1').evaluate((element) => getComputedStyle(element).animationName)).toBe('none');
+  const card = page.locator('#portfolio article').first();
+  await card.hover();
+  expect(await card.evaluate((element) => getComputedStyle(element).transitionDuration)).toBe('0s');
+  expect(await card.evaluate((element) => getComputedStyle(element).transform)).toBe('none');
+  await page.emulateMedia({ reducedMotion: 'no-preference' });
+  await page.goto('/');
+  await expect(page.locator('[data-reveal-state="pending"]').first()).toHaveCount(1);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('[data-reveal-state="pending"]')).toHaveCount(0);
+  const noJs = await browser.newContext({ javaScriptEnabled: false });
+  const snapshot = await noJs.newPage();
+  await snapshot.goto('http://127.0.0.1:4176/');
+  await expect(snapshot.locator('#portfolio h2')).toHaveText('Projects');
+  await expect(snapshot.locator('#contact form')).toBeVisible();
+  expect(await snapshot.locator('#portfolio article').first().evaluate((element) => getComputedStyle(element).opacity)).toBe('1');
+  await noJs.close();
 });
 
 test('contact service errors and network failures preserve entered values', async ({ page }) => {
