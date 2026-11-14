@@ -147,7 +147,7 @@ test('header targets and spacing stay balanced at intermediate and large widths'
     await expect(links).toHaveCount(9);
     for (const link of await links.all()) {
       const size = await link.evaluate((element) => ({ font: parseFloat(getComputedStyle(element).fontSize), height: element.getBoundingClientRect().height }));
-      expect(size.font).toBeGreaterThanOrEqual(16);
+      expect(size.font).toBeGreaterThanOrEqual(18);
       expect(size.height).toBeGreaterThanOrEqual(48);
     }
     if (width >= 1280) {
@@ -156,6 +156,14 @@ test('header targets and spacing stay balanced at intermediate and large widths'
       const last = await links.last().boundingBox();
       expect(first!.x - (brand!.x + brand!.width)).toBeLessThanOrEqual(32);
       expect(last!.x + last!.width).toBeLessThanOrEqual(width - 19);
+      const bounds = await links.evaluateAll((elements) => elements.map((element) => {
+        const { left, right } = element.getBoundingClientRect();
+        return { left, right };
+      }));
+      for (let index = 1; index < bounds.length; index++) {
+        expect(bounds[index].left - bounds[index - 1].right).toBeGreaterThanOrEqual(0);
+        expect(bounds[index].left - bounds[index - 1].right).toBeLessThanOrEqual(8);
+      }
     }
   }
 });
