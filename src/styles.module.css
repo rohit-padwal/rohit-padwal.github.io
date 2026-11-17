@@ -5,18 +5,18 @@
 .skipLink { position: fixed; left: 20px; top: -100px; z-index: 100; padding: 12px 24px; background: var(--blue); color: white; border-radius: 5px; }
 .skipLink:focus { top: 12px; }
 .header { position: sticky; top: 0; z-index: 20; background: rgb(248 250 251 / 96%); border-bottom: 1px solid var(--line); backdrop-filter: blur(16px); }
-.headerInner { width: fit-content; max-width: calc(100% - 48px); margin-inline: auto; display: flex; align-items: center; min-height: 76px; gap: 24px; }
+.headerInner { width: min(1240px, calc(100% - 64px)); margin-inline: auto; display: flex; align-items: center; min-height: 80px; gap: 28px; }
 .brand { display: inline-flex; align-items: center; gap: 13px; font-family: var(--heading); font-size: 17px; font-weight: 800; letter-spacing: -.04em; white-space: nowrap; }
 .monogram { display: inline-flex; align-items: center; justify-content: center; background: var(--ink); color: white; font-size: 24px; line-height: 1; padding: 10px; width: 43px; height: 43px; border-radius: 8px; }
 .monogram span { color: #8aabff; }
-.nav { display: flex; flex: 0 1 auto; min-width: 0; align-items: center; justify-content: flex-start; gap: 4px; font-size: 18px; font-weight: 600; letter-spacing: .005em; }
-.nav a { display: inline-flex; align-items: center; justify-content: center; padding: 10px; min-height: 48px; line-height: 1.45; position: relative; white-space: nowrap; border-radius: 6px; }
+.nav { display: flex; flex: 1; min-width: 0; align-items: center; justify-content: space-between; gap: 12px; font-size: 18px; font-weight: 600; letter-spacing: .005em; }
+.nav a { display: inline-flex; align-items: center; justify-content: center; padding: 12px; min-height: 48px; line-height: 1.45; position: relative; white-space: nowrap; border-radius: 6px; }
 .nav a:hover { color: var(--teal); background: var(--teal-wash); }
 .nav a[aria-current] { color: var(--blue); background: var(--blue-wash); }
 .nav a::after { content: ""; position: absolute; bottom: 6px; height: 2px; left: 11px; right: 11px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 200ms ease; }
 .nav a:hover::after, .nav a:focus-visible::after { transform: scaleX(1); }
 .nav a[aria-current]::after { background: var(--blue); transform: scaleX(1); }
-.nav a:last-child { border: 1px solid var(--teal); background: var(--teal); color: var(--surface); padding: 10px 15px; border-radius: 6px; }
+.nav a:last-child { border: 1px solid var(--teal); background: var(--teal); color: var(--surface); padding: 12px 18px; border-radius: 6px; }
 .nav a:last-child:hover { background: #0b5953; border-color: #0b5953; }
 .nav a:last-child::after { background: currentColor; }
 .menuToggle { display: none; }
@@ -268,7 +268,7 @@
   .menuToggle { display: flex; gap: 15px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 5px; background: white; color: var(--ink); font-size: 16px; }
   .menuToggle span { font-size: 18px; }
   .nav { display: none; position: absolute; top: 75px; left: 0; right: 0; padding: 18px 24px 22px; background: var(--surface); box-shadow: 0 12px 22px #15263f12; border-bottom: 1px solid var(--line); max-height: calc(100dvh - 76px); overflow-y: auto; }
-  .navOpen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px 12px; }
+  .navOpen { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 16px; }
   .nav a { min-height: 48px; justify-content: flex-start; }
   .nav a:last-child { padding: 12px 11px; }
   .heroGrid { gap: 45px; }

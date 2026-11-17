@@ -161,8 +161,8 @@ test('header targets and spacing stay balanced at intermediate and large widths'
         return { left, right };
       }));
       for (let index = 1; index < bounds.length; index++) {
-        expect(bounds[index].left - bounds[index - 1].right).toBeGreaterThanOrEqual(0);
-        expect(bounds[index].left - bounds[index - 1].right).toBeLessThanOrEqual(8);
+        expect(bounds[index].left - bounds[index - 1].right).toBeGreaterThanOrEqual(12);
+        expect(bounds[index].left - bounds[index - 1].right).toBeLessThanOrEqual(32);
       }
     }
   }
